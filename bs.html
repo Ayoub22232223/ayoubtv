@@ -1393,52 +1393,7 @@ Icono de Audio.
   
   
   
-  
-  <script>
-  
-  // إعداد بيانات الطلب
-const url = "https://yallagoall.com/TOD/WEB/BEIN/bs1.php";
-const headers = {
-  "Content-Type": "application/x-www-form-urlencoded",
-  "Referer": "https://www.high-kora.com/"
-};
-const body = ""; // يمكنك تعديل المحتوى إذا كان هناك بيانات تحتاج إلى إرسالها
 
-// إجراء الطلب POST
-fetch(url, {
-  method: "POST",
-  headers: headers,
-  body: body
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`خطأ في الطلب: ${response.status}`);
-    }
-    return response.text(); // استلام النص الكامل للرد
-  })
-  .then(data => {
-    // تحليل البيانات للحصول على stream_url
-    const startStr = ",\"stream_url\":\"";
-    const endStr = "\",";
-    const startIndex = data.indexOf(startStr);
-    const endIndex = data.indexOf(endStr, startIndex + startStr.length);
-
-    if (startIndex !== -1 && endIndex !== -1) {
-      const streamUrl = data.substring(startIndex + startStr.length, endIndex);
-      console.log("Stream URL:", streamUrl); // عرض الرابط في وحدة التحكم
-    } else {
-      console.error("لم يتم العثور على stream_url في الرد.");
-    }
-  })
-  .catch(error => {
-    console.error("حدث خطأ أثناء الطلب:", error);
-  });
-  </script>
-  
-  
-  
-  
-  
   
   <script>
     
